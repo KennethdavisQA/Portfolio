@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenneth Davis - Producer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #24313d;
+            background: #eef2f5;
+        }
+
+        .navigation {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(17, 33, 49, 0.96);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 14px 20px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .nav-item {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 999px;
+            color: #dfe7ef;
+            text-decoration: none;
+            font-size: 0.92rem;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: #2e6df6;
+            color: #fff;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #102033 0%, #1a4060 55%, #276b7d 100%);
+            color: #fff;
+            padding: 72px 20px 64px;
+        }
+
+        .hero-content,
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.05;
+            margin-bottom: 14px;
+        }
+
+        .hero-subtitle {
+            max-width: 860px;
+            font-size: 1.18rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            margin-top: 34px;
+        }
+
+        .hero-stat {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .hero-stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .hero-stat-label {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.82);
+        }
+
+        .container {
+            padding: 28px 20px 60px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px;
+            margin: 24px 0;
+            box-shadow: 0 12px 32px rgba(28, 43, 58, 0.08);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: #102033;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-bottom: 3px solid #2e6df6;
+            padding-bottom: 12px;
+        }
+
+        .section-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: #e8f0ff;
+            color: #2e6df6;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .highlight-banner {
+            background: linear-gradient(135deg, #f3f8ff 0%, #e8f4f8 100%);
+            border: 1px solid #cfe0f7;
+            color: #17324b;
+            border-radius: 16px;
+            padding: 22px 24px;
+            margin-bottom: 26px;
+        }
+
+        .highlight-text {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            max-width: 900px;
+            font-size: 1rem;
+            color: #41505d;
+            margin-bottom: 24px;
+        }
+
+        .achievements-grid,
+        .contribution-list,
+        .two-column {
+            display: grid;
+            gap: 18px;
+        }
+
+        .achievements-grid {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        .contribution-list,
+        .two-column {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .achievement-card {
+            background: linear-gradient(145deg, #16324a 0%, #24516f 100%);
+            color: #fff;
+            border-radius: 18px;
+            padding: 24px;
+        }
+
+        .achievement-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .achievement-impact {
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #8fe0ff;
+        }
+
+        .achievement-description {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .category-section {
+            background: #f6f9fc;
+            border-left: 5px solid #2e6df6;
+            border-radius: 16px;
+            padding: 26px;
+            margin: 22px 0;
+        }
+
+        .category-title {
+            font-size: 1.35rem;
+            color: #17324b;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 10px;
+            background: #dbe8ff;
+            color: #2e6df6;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .contribution-item {
+            background: #fff;
+            border-radius: 14px;
+            padding: 20px;
+            border-left: 4px solid #27a36a;
+            box-shadow: 0 5px 15px rgba(26, 45, 62, 0.06);
+        }
+
+        .contribution-title {
+            font-weight: 700;
+            color: #17324b;
+            margin-bottom: 8px;
+        }
+
+        .contribution-description {
+            color: #51606d;
+            font-size: 0.96rem;
+        }
+
+        .impact-metric {
+            display: inline-block;
+            margin-top: 12px;
+            background: #e8f7ef;
+            color: #1f7a50;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .summary-panel {
+            background: linear-gradient(145deg, #102033 0%, #1c4363 100%);
+            color: #fff;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 24px;
+        }
+
+        .summary-panel h3 {
+            font-size: 1.4rem;
+            margin-bottom: 14px;
+        }
+
+        .summary-panel p {
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 1rem;
+        }
+
+        ul {
+            margin-left: 18px;
+            color: #4a5967;
+        }
+
+        li + li {
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 26px 20px;
+            }
+
+            .hero-section {
+                padding: 58px 20px 50px;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-menu {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navigation">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#overview" class="nav-item active">Overview</a></li>
+                <li><a href="#results" class="nav-item">Results</a></li>
+                <li><a href="#producer-fit" class="nav-item">Producer Fit</a></li>
+                <li><a href="#technology" class="nav-item">Technology</a></li>
+                <li><a href="#case-study" class="nav-item">Case Study</a></li>
+                <li><a href="#leadership" class="nav-item">Leadership</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Kenneth Davis</h1>
+            <p class="hero-subtitle">AAA game development leader with a QA foundation, strong operational discipline, and practical technical fluency that supports better production execution.</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">AAA</div>
+                    <div class="hero-stat-label">Game development experience</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">Cross</div>
+                    <div class="hero-stat-label">Functional coordination</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">Quality</div>
+                    <div class="hero-stat-label">Execution mindset</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">Tech</div>
+                    <div class="hero-stat-label">Operational leverage</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="overview" class="section">
+            <h2 class="section-title">
+                <span class="section-icon">01</span>
+                Overview
+            </h2>
+            <div class="highlight-banner">
+                <div class="highlight-text">I help teams execute with more clarity, better reporting, tighter cross functional alignment, and stronger quality visibility.</div>
+            </div>
+            <p class="intro-text">
+                My background is in QA leadership, operational support, automation strategy, and cross team coordination across AAA development. The producer value in that background is straightforward: I know how to track moving parts, surface risk, keep communication clean, support milestone execution, and use technology to reduce manual overhead without distracting from the work.
+            </p>
+            <div class="two-column">
+                <div class="contribution-item">
+                    <div class="contribution-title">What I Bring</div>
+                    <div class="contribution-description">
+                        Calm execution, documentation discipline, issue triage, quality awareness, stakeholder communication, and follow through across multiple functions.
+                    </div>
+                </div>
+                <div class="contribution-item">
+                    <div class="contribution-title">How I Use Technology</div>
+                    <div class="contribution-description">
+                        I use tools and lightweight systems to improve status reporting, risk visibility, and team efficiency. The point is not novelty. The point is better decisions and less wasted time.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="results" class="section">
+            <h2 class="section-title">
+                <span class="section-icon">02</span>
+                Key Results
+            </h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-title">Cross Team Execution</div>
+                    <div class="achievement-impact">Alignment</div>
+                    <div class="achievement-description">
+                        Worked across QA, engineering, production, and partner groups to improve communication flow, clarify ownership, and support execution across shared initiatives.
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-title">Reporting Improvements</div>
+                    <div class="achievement-impact">Visibility</div>
+                    <div class="achievement-description">
+                        Built reporting workflows and dashboards that gave leads and stakeholders a cleaner read on project status, quality trends, and delivery risk.
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-title">Workflow Efficiency</div>
+                    <div class="achievement-impact">Time Saved</div>
+                    <div class="achievement-description">
+                        Reduced manual overhead in recurring QA and reporting workflows through automation, better documentation, and cleaner operating processes.
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-title">Risk Detection</div>
+                    <div class="achievement-impact">Accuracy</div>
+                    <div class="achievement-description">
+                        Identified data integrity and reporting issues before they could drive bad decisions, then built validation steps to improve confidence in the output.
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-title">Distributed Team Support</div>
+                    <div class="achievement-impact">Continuity</div>
+                    <div class="achievement-description">
+                        Supported work across remote teams and vendors while maintaining standards, clear communication, and accountability across shared deliverables.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="producer-fit" class="section">
+            <h2 class="section-title">
+                <span class="section-icon">03</span>
+                Producer Fit
+            </h2>
+            <div class="category-section">
+                <h3 class="category-title">
+                    <span class="category-icon">A</span>
+                    Why My Experience Maps To Production
+                </h3>
+                <div class="contribution-list">
+                    <div class="contribution-item">
+                        <div class="contribution-title">Milestone Support</div>
+                        <div class="contribution-description">
+                            I am comfortable tracking progress across workstreams, identifying blockers, keeping teams informed, and helping leads stay ahead of execution risk.
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-title">Issue Triage</div>
+                        <div class="contribution-description">
+                            My QA background makes me strong at separating critical problems from noise and escalating issues with context, impact, and next steps.
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-title">Stakeholder Communication</div>
+                        <div class="contribution-description">
+                            I can translate technical, operational, and quality details into concise updates that help partners make decisions without getting buried in detail.
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-title">Process Adoption</div>
+                        <div class="contribution-description">
+                            I do not stop at suggesting improvements. I document workflows, train people, refine rough edges, and help teams actually adopt the process.
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-title">Player And Quality Awareness</div>
+                        <div class="contribution-description">
+                            I naturally look at release readiness, bug prioritization, player impact, and how quality tradeoffs affect the final experience.
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-title">Partner Management</div>
+                        <div class="contribution-description">
+                            I have worked with internal teams, external vendors, and distributed groups and know how to maintain momentum across different priorities and communication styles.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="technology" class="section">
+            <h2 class="section-title">
+                <span class="section-icon">04</span>
+                Technology In Service Of Production
+            </h2>
+            <div class="category-section">
+                <h3 class="category-title">
+                    <span class="category-icon">B</span>
+                    Practical Technology Applications
+                </h3>
+                <div class="contribution-list">
+                    <div class="contribution-item">
+                        <div class="contribution-title">Status Reporting</div>
+                        <div class="contribution-description">
+                            Build lightweight reporting from Jira, TestRail, bug data, and team inputs so leads have a faster and more consistent view of project health.
+                        </div>
+                        <div class="impact-metric">Faster reads</div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-title">Risk Monitoring</div>
+                        <div class="contribution-description">
+                            Use trend data, validation, and workflow tooling to flag instability, expose bottlenecks, and support better milestone conversations.
+                        </div>
+                        <div class="impact-metric">Earlier escalation</div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-title">Workflow Automation</div>
+                        <div class="contribution-description">
+                            Automate repetitive setup, exports, and reporting tasks so teams spend more time on execution and less time on recurring admin work.
+                        </div>
+                        <div class="impact-metric">Less overhead</div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-title">Documentation And Knowledge Sharing</div>
+                        <div class="contribution-description">
+                            Create operating guides, tracking references, and process documentation so teams can scale without relying on memory or hallway context.
+                        </div>
+                        <div class="impact-metric">Better continuity</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h3 class="category-title">
+                    <span class="category-icon">C</span>
+                    Tools I Use
+                </h3>
+                <div class="two-column">
+                    <div>
+                        <ul>
+                            <li>Jira and JQL for issue tracking and reporting</li>
+                            <li>TestRail for coverage and test operations</li>
+                            <li>Python for repeatable workflow automation</li>
+                            <li>SQL for extracting and organizing useful project data</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>AWS hosted dashboards and reporting delivery</li>
+                            <li>Confluence and documentation systems for shared process clarity</li>
+                            <li>Quality metrics and KPI frameworks for execution visibility</li>
+                            <li>Automation only where it reduces friction for the team</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="case-study" class="section">
+            <h2 class="section-title">
+                <span class="section-icon">05</span>
+                Case Study
+            </h2>
+            <div class="highlight-banner">
+                <div class="highlight-text">A reporting improvement effort that reduced manual work, improved accuracy, and gave teams a cleaner read on project health.</div>
+            </div>
+            <div class="category-section">
+                <h3 class="category-title">
+                    <span class="category-icon">D</span>
+                    Weekly Game Health Reporting
+                </h3>
+                <div class="contribution-list">
+                    <div class="contribution-item">
+                        <div class="contribution-title">Problem</div>
+                        <div class="contribution-description">
+                            Weekly reporting required manual effort and there was risk that bad or placeholder data could make its way into leadership facing updates.
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-title">Action</div>
+                        <div class="contribution-description">
+                            Built a more dependable reporting workflow using Python, validation checks, and cloud hosted delivery to improve consistency and reduce manual handling.
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-title">Outcome</div>
+                        <div class="contribution-description">
+                            Reduced recurring overhead, improved confidence in the data, and gave stakeholders a more reliable source of truth for testing activity and issue trends.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="achievements-grid" style="margin-top: 22px;">
+                <div class="achievement-card">
+                    <div class="achievement-title">Operational Value</div>
+                    <div class="achievement-impact">Consistency</div>
+                    <div class="achievement-description">
+                        Simplified a recurring reporting process and made it easier to run week over week with less manual effort.
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-title">Producer Value</div>
+                    <div class="achievement-impact">Shared Context</div>
+                    <div class="achievement-description">
+                        Improved the quality of milestone and status conversations by giving leads a cleaner and more dependable view of what was happening.
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-title">Team Value</div>
+                    <div class="achievement-impact">Focus</div>
+                    <div class="achievement-description">
+                        Freed time for higher value execution work instead of repetitive administrative tasks.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="leadership" class="section">
+            <h2 class="section-title">
+                <span class="section-icon">06</span>
+                Leadership
+            </h2>
+            <div class="category-section">
+                <h3 class="category-title">
+                    <span class="category-icon">E</span>
+                    Working Style
+                </h3>
+                <div class="contribution-list">
+                    <div class="contribution-item">
+                        <div class="contribution-title">Steady Communication</div>
+                        <div class="contribution-description">
+                            I prefer straightforward updates, clear owners, documented next steps, and realistic expectations.
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-title">Trust Through Follow Through</div>
+                        <div class="contribution-description">
+                            I build trust by being dependable, keeping people informed, and closing the loop on open items.
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-title">Cross Functional Range</div>
+                        <div class="contribution-description">
+                            I work well with development, QA, publishing, operations, and external partners because I care about clarity, context, and practical execution.
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-title">Continuous Improvement</div>
+                        <div class="contribution-description">
+                            I look for repeat pain points, simplify them, and leave behind a process the team can actually use.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary-panel">
+                <h3>Producer Value Summary</h3>
+                <p>
+                    I bring a combination of production support, quality awareness, operational discipline, and practical technology fluency. That combination helps teams execute with more confidence and gives leadership better visibility into what matters without adding noise.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const navItems = document.querySelectorAll(".nav-item");
+
+            navItems.forEach(function(item) {
+                item.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    navItems.forEach(function(nav) {
+                        nav.classList.remove("active");
+                    });
+                    this.classList.add("active");
+                    const targetId = this.getAttribute("href").substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
